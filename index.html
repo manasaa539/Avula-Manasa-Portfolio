@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Avula Manasa Portfolio</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}
+
+body{
+  color:white;
+  background: linear-gradient(135deg,#667eea,#764ba2);
+  overflow-x:hidden;
+}
+
+/* PARTICLES */
+canvas{
+  position:fixed;
+  top:0;
+  left:0;
+  z-index:-1;
+}
+
+/* NAVBAR */
+nav{
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:10px;
+  padding:20px;
+  background:rgba(0,0,0,0.3);
+}
+
+nav button{
+  background:#ffd54f;
+  padding:10px 18px;
+  border-radius:25px;
+  border:none;
+  cursor:pointer;
+  font-weight:bold;
+  transition:0.3s;
+}
+nav button:hover{transform:scale(1.1);background:white}
+
+/* PAGE */
+.page{display:none;min-height:100vh;padding:60px 20px;animation:fade 0.6s}
+.active{display:block}
+
+/* HERO */
+.hero{
+  height:80vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+}
+.hero h1{font-size:45px}
+
+/* TYPING */
+.typing{
+  margin-top:15px;
+  background:rgba(0,0,0,0.4);
+  padding:12px 25px;
+  border-radius:15px;
+}
+
+/* SECTION */
+.section{max-width:900px;margin:auto;text-align:center}
+.section h2{font-size:32px;margin-bottom:20px}
+
+/* CARDS */
+.card{
+  background:rgba(255,255,255,0.15);
+  padding:25px;
+  margin:20px;
+  border-radius:15px;
+  backdrop-filter:blur(10px);
+  transition:0.3s;
+  cursor:pointer;
+}
+.card:hover{transform:translateY(-10px)}
+
+/* BUTTON */
+.btn{
+  margin-top:15px;
+  padding:10px 20px;
+  background:#ffd54f;
+  color:black;
+  border-radius:20px;
+  text-decoration:none;
+  font-weight:bold;
+}
+
+/* CONTACT LINKS */
+.links a{
+  display:inline-block;
+  margin:10px;
+  color:white;
+  text-decoration:none;
+}
+
+/* MODAL */
+#modal{
+  display:none;
+  position:fixed;
+  top:0;left:0;
+  width:100%;height:100%;
+  background:rgba(0,0,0,0.9);
+  justify-content:center;
+  align-items:center;
+}
+
+#modal img{
+  max-width:80%;
+  max-height:80%;
+  border-radius:10px;
+}
+
+.close{
+  position:absolute;
+  top:20px;
+  right:30px;
+  font-size:30px;
+  cursor:pointer;
+}
+
+.prev,.next{
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  background:#ffd54f;
+  border:none;
+  padding:10px;
+  cursor:pointer;
+}
+
+.prev{left:20px}
+.next{right:20px}
+
+/* FOOTER */
+footer{
+  text-align:center;
+  padding:20px;
+  background:rgba(0,0,0,0.4);
+}
+
+/* ANIMATION */
+@keyframes fade{
+  from{opacity:0;transform:translateY(20px)}
+  to{opacity:1;transform:translateY(0)}
+}
+</style>
+</head>
+
+<body>
+
+<canvas id="bg"></canvas>
+
+<!-- NAVBAR -->
+<nav>
+  <button onclick="showPage('home')">🏠 Home</button>
+  <button onclick="showPage('about')">👩 About</button>
+  <button onclick="showPage('education')">🎓 Education</button>
+  <button onclick="showPage('projects')">💻 Projects</button>
+  <button onclick="showPage('internships')">💼 Internships</button>
+  <button onclick="showPage('certificates')">📄 Certificates</button>
+  <button onclick="showPage('contact')">📞 Contact</button>
+</nav>
+
+<!-- HOME -->
+<div id="home" class="page active">
+  <div class="hero">
+    <h1>Hi, I'm Avula Manasa</h1>
+    <div class="typing" id="typing"></div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<div id="about" class="page">
+  <div class="section">
+    <h2>About Me</h2>
+    <div class="card">
+    <p>
+      I am a passionate Computer Science student with strong academic performance and hands-on
+      experience in Full Stack Java Development. I enjoy building scalable applications and
+      solving real-world problems. I continuously learn new technologies to improve my skills
+      and aim to become a successful software developer.
+    </p>
+    </div>
+  </div>
+</div>
+
+<!-- EDUCATION -->
+<div id="education" class="page">
+  <div class="section">
+    <h2>Education</h2>
+
+    <div class="card">
+      <h3>B.Tech - Computer Science</h3>
+      <p>Audisankara College of Engineering</p>
+      <p>Percentage: 91%</p>
+    </div>
+
+    <div class="card">
+      <h3>Intermediate (MPC)</h3>
+      <p>Sri Vikas Junior College</p>
+      <p>Percentage: 87%</p>
+    </div>
+
+    <div class="card">
+      <h3>SSC</h3>
+      <p>Sri Siddartha E.M High School</p>
+      <p>percentege: 98%</p>
+    </div>
+  </div>
+</div>
+
+<!-- PROJECTS -->
+<div id="projects" class="page">
+  <div class="section">
+    <h2>Projects</h2>
+
+    <div class="card">
+      <h3>Smart Academic Planner and Scheduler</h3>
+      <p>The Smart Academic Planner and Scheduler is a digital solution designed to assist students and educators in efficiently 
+organizing academic tasks, events, and deadlines. In today’s fast-moving academic world, students often face challenges in 
+managing multiple activities such as attending lectures, completing assignments, and preparing for examinations. This 
+project provides an intelligent platform that simplifies academic planning and ensures better time utilization through 
+automation and smart scheduling. </p>
+    </div>
+  </div>
+</div>
+
+<!-- INTERNSHIPS -->
+<div id="internships" class="page">
+  <div class="section">
+    <h2>Internships</h2>
+
+    <div class="card">
+      <h3>Java Full Stack Developer</h3>
+      <p>KodNest – Bangalore, Karnataka</p> 
+      <p>•As a Full Stack Java Developer Intern at KodNest, I gained hands-on experience in designing and developing web 
+          applications using Java, SQL, and front-end technologies like HTML, CSS, and JavaScript.</p>  
+      <p>•I contributed to the development of scalable web applications, honing my skills in Java, Spring, and database 
+          management.</p> 
+      <p>•"KodNest's online internship program helped me build a strong foundation in Full Stack Java Development, with hands-on 
+      experience in designing, developing, and deploying web applications."</p>
+    </div>
+  </div>
+</div>
+
+<!-- CERTIFICATES -->
+<div id="certificates" class="page">
+  <div class="section">
+    <h2>Certificates</h2>
+
+    <div class="card" onclick="openModal(0)">
+      <p>•Python Programming course from Dhaapps</p>   
+      <p>•Introduction to HTML from simplilearn</p>  
+      <p>•Build a free website with WordPress from courseera</p>   
+      <p>•Frontend Developer Internship Offer Letter from ALFIDO TECH<p> 
+      <p>•Securing a 320th rank in daily quiz management certificate of Excellence from unstop</p>
+  </div>
+</div>
+</div>
+</body>
+
+<!-- CONTACT -->
+<div id="contact" class="page">
+  <div class="section">
+    <h2>Contact</h2>
+    <div class="card">
+    <p>📞 6304664849</p>
+    </div>
+    <div class="card">
+    <p>📧 manasayadav476@gmail.com</p>
+    </div>
+    <div class="card">
+    <p>
+    <a href="https://drive.google.com/file/d/1aKgGoysJcaPcoQr8BnA7kmZWAltrae3Z/view?usp=drivesdk" class="btn">📄 View Resume</a>
+    </p>
+    </div>
+    <div class="card">
+      <a href="https://www.linkedin.com/in/manasa-avula-115b74348?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app">🔗 LinkedIn</a>
+    </div>
+    <div class="card">
+      <a href="https://github.com/dashboard">💻 GitHub</a>
+    </div>
+  </div>
+</div>
+<!-- MODAL -->
+<div id="modal">
+  <span class="close" onclick="closeModal()">✖</span>
+  <img id="modalImg">
+  <button class="prev" onclick="changeSlide(-1)">⬅</button>
+  <button class="next" onclick="changeSlide(1)">➡</button>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2026 Avula Manasa</p>
+  <p>📞 6304664849 | 📧 manasayadav476@gmail.com</p>
+  <p>Full Stack Developer</p>
+</footer>
+
+<script>
+// PAGE SWITCH
+function showPage(id){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+}
+
+// TYPING
+const txt=["Full Stack Developer","Java Developer","Frontend Enthusiast"];
+let i=0,j=0,cur="",del=false;
+function type(){
+ let el=document.getElementById("typing");
+ if(i<txt.length){
+  if(!del && j<=txt[i].length){cur=txt[i].substring(0,j++);}
+  else if(del && j>=0){cur=txt[i].substring(0,j--);}
+  el.innerHTML=cur;
+  if(j==txt[i].length) del=true;
+  if(j==0){del=false;i++;}
+ } else i=0;
+ setTimeout(type,100);
+}
+type();
+
+// CERTIFICATES
+let images=["cert1.jpg","cert2.jpg"];
+let index=0;
+
+function openModal(i){
+  index=i;
+  document.getElementById("modal").style.display="flex";
+  document.getElementById("modalImg").src=images[index];
+}
+
+function closeModal(){
+  document.getElementById("modal").style.display="none";
+}
+
+function changeSlide(step){
+  index+=step;
+  if(index<0) index=images.length-1;
+  if(index>=images.length) index=0;
+  document.getElementById("modalImg").src=images[index];
+}
+
+// PARTICLES
+const c=document.getElementById("bg");
+const ctx=c.getContext("2d");
+c.width=window.innerWidth;
+c.height=window.innerHeight;
+
+let p=[];
+for(let i=0;i<60;i++){
+ p.push({x:Math.random()*c.width,y:Math.random()*c.height});
+}
+
+function draw(){
+ ctx.clearRect(0,0,c.width,c.height);
+ p.forEach(pt=>{
+  ctx.beginPath();
+  ctx.arc(pt.x,pt.y,2,0,Math.PI*2);
+  ctx.fillStyle="white";
+  ctx.fill();
+  pt.y+=0.3;
+  if(pt.y>c.height) pt.y=0;
+ });
+ requestAnimationFrame(draw);
+}
+draw();
+</script>
+
+</body>
+</html>
